@@ -30,7 +30,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip',  //файл с исходниками кода передается из jenkins который был сгенерирован на этапе сборки
                                         removePrefix: 'dist/',                  //чтобы не переместить папку dist, а то создастся папка dist
                                         remoteDirectory: '/tmp',                //перемещение файла в темп
-                                        execCommand: 'sudo systemctl stop nginx && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start nginx'
+                                        execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                     )
                                 ]
                             )
@@ -63,7 +63,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip', //файл передается из jenkins который был сгенерирован на этапе сборки
                                         removePrefix: 'dist/', //чтобы не переместить папку dist, а то создастся папка dist
                                         remoteDirectory: '/tmp', //перемещение файла в темп
-                                        execCommand: 'sudo systemctl stop nginx && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo systemctl start nginx'
+                                        execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                     )
                                 ]
                             )
