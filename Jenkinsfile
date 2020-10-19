@@ -14,7 +14,7 @@ pipeline {
                 branch 'master'
             }
             steps {             //шаг получения доступа к учетным данным в jenkins  переменные имя пользователя и пароля для ссылки на withCredentials
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                withCredentials([usernameKey(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', keyVariable: 'USERKEY')]) {
                     sshPublisher(
                         failOnError: true,                          //если файлы неполучится передать на сервер то дальше этапы не запустятся, сборка завершится неудачей
                         continueOnError: false,
@@ -23,7 +23,7 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
+                                    encryptedPassphrase: "$USERKEY"
                                 ], 
                                 transfers: [
                                     sshTransfer(
