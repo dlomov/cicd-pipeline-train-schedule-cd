@@ -30,7 +30,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip',  //файл с исходниками кода передается из jenkins который был сгенерирован на этапе сборки
                                         removePrefix: 'dist/',                  //чтобы не переместить папку dist, а то создастся папка dist
                                         remoteDirectory: '/tmp',                //перемещение файла в темп
-                                        execCommand: 'sudo systemctl stop nginx && rm -rf /usr/share/nginx/html/* && unzip /tmp/trainSchedule.zip -d /usr/share/nginx/html/ && sudo systemctl start nginx'
+                                        execCommand: 'sudo rm -rf /usr/share/nginx/html/* && unzip /tmp/trainSchedule.zip -d /usr/share/nginx/html/'
                                     )
                                 ]
                             )
