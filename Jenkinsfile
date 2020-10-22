@@ -49,7 +49,7 @@ pipeline {
                 milestone(1)                                                       //переменные имя пользователя и пароля для ссылки на withCredentials
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
-                        failOnError: true,  //если файлы неполучится передать на сервер то дальше этапы не запустятся, сборка завершится неудачей
+                        failOnError: true,  //если файлы неполучится передать на сервер то дальше этапы не запустятся, сборка завершится неудачей!
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
